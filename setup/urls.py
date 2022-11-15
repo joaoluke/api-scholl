@@ -2,7 +2,7 @@
 from xml.etree.ElementInclude import include
 from django.contrib import admin
 from django.urls import path, include
-from school.views import StudentsViewSet, CoursesViewSet, RegistrationsViewSet, ListRegisterStudent
+from school.views import ListStudentRegisteredPerCourse, StudentsViewSet, CoursesViewSet, RegistrationsViewSet, ListRegisterStudent
 from rest_framework import routers
 
 router = routers.DefaultRouter()
@@ -14,4 +14,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('student/<int:pk>/registration/', ListRegisterStudent.as_view()),
+    path('course/<int:pk>/registration/', ListStudentRegisteredPerCourse.as_view()),
 ]
