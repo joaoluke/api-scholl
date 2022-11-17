@@ -7,6 +7,7 @@ class Student(models.Model):
     email = models.EmailField(blank=False, unique=True)
     birth_data = models.DateField()
     phone = models.CharField(max_length=14, unique=True)
+    photo = models.ImageField(blank=True)
 
     def __str__(self):
         return self.name

@@ -20,6 +20,11 @@ class StudentSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("The name must not contain special characters")
         return name
 
+    def validate_rg(self, rg):
+        if not len(rg) > 9 and len(rg) < 5:
+            raise serializers.ValidationError("Invalid RG")
+        return rg
+
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
