@@ -3,6 +3,8 @@
         "corsheaders",
         "docbr",
         "filterset",
-        "viewsets"
+        "gunicorn",
+        "viewsets",
+        "wsgi"
     ]
 }

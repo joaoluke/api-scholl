@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -119,7 +120,8 @@ USE_TZ = True
 
 CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:5173',
-    'http://localhost:5173'
+    'http://localhost:5173',
+    'http://localhost:4000'
 ]
 
 
@@ -140,3 +142,5 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
+
+django_heroku.settings(locals())
