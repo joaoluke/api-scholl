@@ -2,6 +2,7 @@ from rest_framework import viewsets, generics, filters
 from school.models import Student, Course, Registration
 from school.serializer import ListStudentRegisteredPerCourseSerializer, StudentSerializer, CourseSerializer, RegistrationSerializer, ListRegisterStudentSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.authentication import BaseAuthentication
 
 
 class StudentsViewSet(viewsets.ModelViewSet):
