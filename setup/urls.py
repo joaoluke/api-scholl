@@ -15,6 +15,6 @@ router.register('registrations', RegistrationsViewSet, basename='Registrations')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('student/<int:pk>/registration/', ListRegisterStudent.as_view()),
-    path('course/<int:pk>/registration/', ListStudentRegisteredPerCourse.as_view()),
+    path('students/<int:pk>/registration/', ListRegisterStudent.as_view()),
+    path('courses/<int:pk>/registration/', ListStudentRegisteredPerCourse.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
