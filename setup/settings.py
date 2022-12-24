@@ -147,3 +147,8 @@ REST_FRAMEWORK = {
 }
 
 django_heroku.settings(locals())
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = 'AKIATTYFEVX3FSRRMO7P'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'dev-school-images'

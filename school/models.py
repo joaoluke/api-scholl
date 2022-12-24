@@ -20,9 +20,10 @@ class Course(models.Model):
     )
 
     name = models.CharField(max_length=30)
-    code = models.CharField(max_length=30)
+    code = models.CharField(max_length=30, unique=True)
     description = models.CharField(max_length=200)
     level = models.CharField(max_length=1, choices=LEVEL, blank=False, null=False, default='B')
+    photo = models.ImageField(blank=True)
 
     def __str__(self):
         return self.name
