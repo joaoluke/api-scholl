@@ -2,6 +2,8 @@ from rest_framework import viewsets, generics, filters
 from school.models import Student, Course, Registration
 from school.serializer import ListStudentRegisteredPerCourseSerializer, StudentSerializer, CourseSerializer, RegistrationSerializer, ListRegisterStudentSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 
 
 class StudentsViewSet(viewsets.ModelViewSet):
@@ -20,6 +22,10 @@ class CoursesViewSet(viewsets.ModelViewSet):
 class RegistrationsViewSet(viewsets.ModelViewSet):
     queryset = Registration.objects.all()
     serializer_class = RegistrationSerializer
+
+    @method_decorator(cache_page(3600))
+    def dispatch(self, *args, **kwargs):
+        return super(RegistrationsViewSet, self).dispatch(*args, **kwargs)
 
 
 class ListRegisterStudent(generics.ListAPIView):
