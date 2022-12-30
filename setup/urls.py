@@ -7,13 +7,16 @@ from django.conf.urls.static import static
 from school.views import ListStudentRegisteredPerCourse, StudentsViewSet, CoursesViewSet, RegistrationsViewSet, ListRegisterStudent
 from rest_framework import routers
 
+
+
 router = routers.DefaultRouter()
 router.register('students', StudentsViewSet, basename='Students')
 router.register('courses', CoursesViewSet, basename='Courses')
 router.register('registrations', RegistrationsViewSet, basename='Registrations')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('control-admin/', admin.site.urls),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     path('', include(router.urls)),
     path('students/<int:pk>/registration/', ListRegisterStudent.as_view()),
     path('courses/<int:pk>/registration/', ListStudentRegisteredPerCourse.as_view()),
