@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import django_heroku
 import os
+from setup.aws_keys import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_honeypot',
     'django_filters',
     'school',
     'corsheaders',
@@ -149,6 +151,6 @@ REST_FRAMEWORK = {
 django_heroku.settings(locals())
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID = 'AKIATTYFEVX3FSRRMO7P'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = AWS_ACCESS_KEY_ID_AWS
+AWS_SECRET_ACCESS_KEY = AWS_SECRET_ACCESS_KEY_AWS
 AWS_STORAGE_BUCKET_NAME = 'dev-school-images'
